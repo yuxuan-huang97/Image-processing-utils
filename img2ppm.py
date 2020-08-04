@@ -17,7 +17,8 @@ f.write("P3 " + str(width) + " " + str(height) + " " + str(255) + "\n")
 for r in range(0,height):
     for c in range(0,width):
         for i in [2, 1, 0]:
-            f.write(str(img[r][width-c-1][i]) + " ")
+            #f.write(str(img[r][width-c-1][i]) + " ")
+            f.write(str(img[r][c][i]) + " ")
         f.write(" ")
     f.write("\n")
 f.close()
