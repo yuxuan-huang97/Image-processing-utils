@@ -3,22 +3,22 @@ Program to convert an image file to ppm p3 format
 by Yuxuan Huang
 """
 
-import cv2
+from PIL import Image
 
-filename = "impressionsunrise"
+filename = "brick_wall_nor"
 fileformat = "jpg"
 
-img = cv2.imread(filename+'.'+fileformat, flags=cv2.IMREAD_COLOR)
-height = img.shape[0]
-width = img.shape[1]
+img = Image.open(filename+'.'+fileformat).convert('RGB')
+height = img.size[0]
+width = img.size[1]
 
 f = open(filename+".ppm", "w")
 f.write("P3 " + str(width) + " " + str(height) + " " + str(255) + "\n")
 for r in range(0,height):
     for c in range(0,width):
-        for i in [2, 1, 0]:
-            #f.write(str(img[r][width-c-1][i]) + " ")
-            f.write(str(img[r][c][i]) + " ")
+        color = img.getpixel((c,r))
+        for i in [0, 1, 2]:
+            f.write(str(color[i]) + " ")
         f.write(" ")
     f.write("\n")
 f.close()
