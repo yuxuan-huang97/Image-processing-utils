@@ -53,18 +53,21 @@ if __name__=="__main__":
     
     args = parseArg()
     
-    if (args['directory']): # convert an entire directory 
-        if args['directory'][-1] != '/': args['directory'] += '/'
-        file_list = os.listdir(args['directory'])
+    if (args['file']): # convert a single image
+        toPPM(args['file'])
+    
+    
+    else: # convert an entire directory 
+        if args['directory'] == None:
+            directory = os.getcwd()
+            print("No file or directory specified. Default to current directory.")
+        else:
+            directory = args['directory']
+        file_list = os.listdir(directory)
+        if directory[-1] != '/': directory += '/'
         for file in file_list:
             if file[-4:] == '.jpg' or file[-4:] == '.png':
-                toPPM(args['directory'] + file)
-    
-    elif (args['file']): # convert a single image
-        toPPM(args['file'])
+                toPPM(directory + file)
         
-    else:
-        print('No image to convert\nPlease specify the file to be converted with -f\
-              \nor the directory to be converted with -d')
         
     
