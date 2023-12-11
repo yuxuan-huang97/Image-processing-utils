@@ -1,5 +1,5 @@
 """
-Program to convert a jpg or png image file to ppm p3 format
+Script to convert jpg or png images to ppm p3 format
 
 Specify the image to be converted with -f [image path]
 or
