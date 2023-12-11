@@ -54,7 +54,7 @@ if __name__=="__main__":
     
     if args['directory'] == None:
         directory = os.getcwd()
-        print("No directory specified. Default to current directory.")
+        print("No directory specified. Default to current working directory.")
     else:
         directory = args['directory']
     file_list = os.listdir(directory)

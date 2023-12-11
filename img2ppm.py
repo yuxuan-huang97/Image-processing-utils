@@ -5,7 +5,7 @@ Specify the image to be converted with -f [image path]
 or
 Specify the directory containing all the images to be converted with -d [directory]
 
-The output will be written to the same directory as this python script
+The output will be written to the same directory as the input images
 
 by Yuxuan Huang
 """
@@ -37,7 +37,7 @@ def toPPM(filename):
     width = img.size[0]
     height = img.size[1]
 
-    f = open(Path(filename).stem + ".ppm", "w")
+    f = open(filename[:-3] + "ppm", "w")
     f.write("P3 " + str(width) + " " + str(height) + " " + str(255) + "\n")
     for r in range(0,height):
         for c in range(0,width):
@@ -60,7 +60,7 @@ if __name__=="__main__":
     else: # convert an entire directory 
         if args['directory'] == None:
             directory = os.getcwd()
-            print("No file or directory specified. Default to current directory.")
+            print("No file or directory specified. Default to current working directory.")
         else:
             directory = args['directory']
         file_list = os.listdir(directory)
